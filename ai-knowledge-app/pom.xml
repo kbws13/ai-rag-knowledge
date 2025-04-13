@@ -80,7 +80,8 @@
 
         <dependency>
             <groupId>xyz.kbws</groupId>
-            <artifactId>ai-knowledge-trigger</artifactId>
+            <artifactId>ai-knowledge-api</artifactId>
+            <version>1.0</version>
         </dependency>
 
     </dependencies>

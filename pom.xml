@@ -17,7 +17,6 @@
     <modules>
         <module>ai-knowledge-api</module>
         <module>ai-knowledge-app</module>
-        <module>ai-knowledge-trigger</module>
     </modules>
 
     <properties>
@@ -94,11 +93,6 @@
             <dependency>
                 <groupId>xyz.kbws</groupId>
                 <artifactId>ai-knowledge-api</artifactId>
-                <version>1.0</version>
-            </dependency>
-            <dependency>
-                <groupId>xyz.kbws</groupId>
-                <artifactId>ai-knowledge-trigger</artifactId>
                 <version>1.0</version>
             </dependency>
         </dependencies>

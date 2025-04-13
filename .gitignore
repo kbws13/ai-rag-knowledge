@@ -4,6 +4,7 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 .idea
+data/
 
 ### STS ###
 .apt_generated

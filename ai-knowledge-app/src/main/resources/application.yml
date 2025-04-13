@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: ai-knowledge
+
+  profiles:
+    active: dev

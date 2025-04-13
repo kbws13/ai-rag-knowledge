@@ -8,7 +8,7 @@ services:
   # 联网模型
   # ollama pull nomic-embed-text
   ollama:
-    image: ollama/ollama:0.5.10
+    image: registry.cn-hangzhou.aliyuncs.com/xfg-studio/ollama:0.5.10
     container_name: ollama
     restart: unless-stopped
     ports:
@@ -20,7 +20,7 @@ services:
     hostname: redis
     privileged: true
     ports:
-      - 16379:6379
+      - "16379:6379"
     volumes:
       - ./redis.conf:/usr/local/etc/redis/redis.conf
     command: redis-server /usr/local/etc/redis/redis.conf
@@ -39,7 +39,7 @@ services:
     hostname: redis-commander
     restart: always
     ports:
-      - 8081:8081
+      - "8081:8081"
     environment:
       - REDIS_HOSTS=local:redis:6379
       - HTTP_USER=admin
@@ -54,7 +54,7 @@ services:
         condition: service_healthy
 
   vector_db:
-    image: pgvector/pgvector:v0.5.0
+    image: registry.cn-hangzhou.aliyuncs.com/xfg-studio/pgvector:v0.5.0
     container_name: vector_db
     restart: always
     environment:
@@ -71,7 +71,7 @@ services:
     ports:
       - '5432:5432'
     healthcheck:
-      test: "pg_isready -U postgres -d vector_store"
+      test: "pg_isready -U postgres -d vector"
       interval: 2s
       timeout: 20s
       retries: 10
