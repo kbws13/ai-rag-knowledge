@@ -97,6 +97,8 @@ public class RAGController implements IRAGService {
                 .setCredentialsProvider(new UsernamePasswordCredentialsProvider(userName, token))
                 .call();
 
+
+        cleanGitMetadata(localPath);
         Files.walkFileTree(Paths.get(localPath), new SimpleFileVisitor<>() {
             @Override
             public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
@@ -144,4 +146,13 @@ public class RAGController implements IRAGService {
         String projectNameWithGit = parts[parts.length - 1];
         return projectNameWithGit.replace(".git", "");
     }
+
+    private void cleanGitMetadata(String localPath) throws IOException {
+        FileUtils.deleteDirectory(new File(localPath, ".git"));
+        Files.deleteIfExists(Paths.get(localPath, ".gitignore"));
+        Files.deleteIfExists(Paths.get(localPath, ".gitattributes"));
+        Files.deleteIfExists(Paths.get(localPath, ".gitmodules"));
+        log.info("已清理 Git 元信息文件");
+    }
+
 }
